@@ -4,11 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UofT Watch Club</title>
-  <meta name="description" content="The University of Toronto Watch Club — a community for students who love horology, from first watches to grand complications.">
+  <meta name="description" content="A student community at the University of Toronto for anyone curious about watches — mechanical, luxury or smart. Membership is free for UofT students.">
+  <link rel="canonical" href="https://uoftwatchclub.com/">
+  <meta name="theme-color" content="#f6f2ea">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UofT Watch Club">
+  <meta property="og:title" content="UofT Watch Club">
+  <meta property="og:description" content="A student community at the University of Toronto for anyone curious about watches. Free membership for UofT students.">
+  <meta property="og:url" content="https://uoftwatchclub.com/">
+  <meta property="og:image" content="https://uoftwatchclub.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,7 +40,7 @@
     <section class="hero">
       <div class="wrap">
         <p class="eyebrow">University of Toronto · St. George · Est. 2026</p>
-        <h1>Time, well kept.</h1>
+        <h1>Time,<br> well kept.</h1>
         <p class="lede">A student community for anyone curious about watches — mechanical, luxury or smart, from your first quartz to the mechanics of a tourbillon.</p>
         <div class="hero-cta">
           <a href="register.html" class="btn">Become a member</a>
@@ -36,15 +48,20 @@
         </div>
       </div>
       <svg class="dial" viewBox="0 0 200 200" aria-hidden="true">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="100" cy="100" r="84" fill="none" stroke="currentColor" stroke-width=".5"/>
-        <g stroke="currentColor" stroke-width="2">
-          <line x1="100" y1="10" x2="100" y2="24"/><line x1="190" y1="100" x2="176" y2="100"/>
-          <line x1="100" y1="190" x2="100" y2="176"/><line x1="10" y1="100" x2="24" y2="100"/>
+        <g class="dial-face">
+          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="100" cy="100" r="84" fill="none" stroke="currentColor" stroke-width=".5"/>
+          <g stroke="currentColor" stroke-width="2">
+            <line x1="100" y1="10" x2="100" y2="24"/><line x1="190" y1="100" x2="176" y2="100"/>
+            <line x1="100" y1="190" x2="100" y2="176"/><line x1="10" y1="100" x2="24" y2="100"/>
+          </g>
+          <line x1="100" y1="100" x2="67.2" y2="77" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <line x1="100" y1="100" x2="148.5" y2="72" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </g>
-        <line x1="100" y1="100" x2="67.2" y2="77" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        <line x1="100" y1="100" x2="148.5" y2="72" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="100" cy="100" r="4" fill="currentColor"/>
+        <g class="sec">
+          <line x1="100" y1="116" x2="100" y2="20" stroke="currentColor" stroke-width=".8" stroke-linecap="round"/>
+          <circle cx="100" cy="100" r="2.5" fill="currentColor"/>
+        </g>
       </svg>
     </section>
 
@@ -53,6 +70,11 @@
         <div>
           <p class="eyebrow">About</p>
           <h2>Who we are</h2>
+          <ul class="facts">
+            <li><strong>Free</strong> membership</li>
+            <li><strong>All</strong> UofT students welcome</li>
+            <li><strong>St. George</strong> campus</li>
+          </ul>
         </div>
         <div class="prose">
           <p>The University of Toronto Watch Club (UTWC) brings together students who are interested in watches of every kind — mechanical, luxury and smart. Whether you own a collection or have never worn a watch, you are welcome here.</p>
@@ -94,7 +116,7 @@
             </div>
           </li>
         </ul>
-        <p class="events-note">More events coming soon.</p>
+        <p class="events-note">More events coming soon. <a href="register.html">Register</a> to hear about them first.</p>
       </div>
     </section>
 
@@ -128,9 +150,27 @@
 
   <footer class="footer">
     <div class="wrap">
+      <nav class="footer-links">
+        <a href="register.html">Register</a>
+        <a href="mailto:info@uoftwatchclub.com">info@uoftwatchclub.com</a>
+        <a href="#top">Back to top</a>
+      </nav>
       <p>© <span id="year"></span> University of Toronto Watch Club. A non-profit student group at the University of Toronto, St. George campus. Not a department, program or service of the University.</p>
     </div>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tick the hero dial's second hand in time with the real clock.
+    const sec = document.querySelector('.dial .sec');
+    const startSec = new Date().getSeconds();
+    const startMs = Date.now();
+    const setHand = () => {
+      const elapsed = Math.round((Date.now() - startMs) / 1000);
+      sec.style.transform = `rotate(${(startSec + elapsed) * 6}deg)`;
+    };
+    setHand();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(setHand, 1000);
+  </script>
 </body>
 </html>
