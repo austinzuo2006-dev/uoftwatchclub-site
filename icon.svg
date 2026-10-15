@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="dial-svg">
   <circle cx="200" cy="200" r="178" fill="none" stroke="#1b2735" stroke-width="22"/>
-  <circle class="ring" cx="200" cy="200" r="178" fill="none" stroke="#4fd1ff" stroke-width="22" stroke-linecap="round"
+  <circle class="ring" cx="200" cy="200" r="178" fill="none" stroke="#cdb184" stroke-width="22" stroke-linecap="round"
           pathLength="100" stroke-dasharray="70.00 100" transform="rotate(-90 200 200)"/>
   <circle cx="200" cy="200" r="150" fill="#0c141f"/>
-  <g stroke="#4fd1ff" stroke-width="22"><line x1="292.00" y1="200.00" x2="332.00" y2="200.00" /><line x1="200.00" y1="292.00" x2="200.00" y2="332.00" /><line x1="108.00" y1="200.00" x2="68.00" y2="200.00" /></g>
-  <polygon points="200.00,112.00 226.00,64.00 174.00,64.00" fill="#4fd1ff"/>
+  <g stroke="#cdb184" stroke-width="22"><line x1="292.00" y1="200.00" x2="332.00" y2="200.00" /><line x1="200.00" y1="292.00" x2="200.00" y2="332.00" /><line x1="108.00" y1="200.00" x2="68.00" y2="200.00" /></g>
+  <polygon points="200.00,112.00 226.00,64.00 174.00,64.00" fill="#cdb184"/>
   <line x1="200" y1="200" x2="135.34" y2="156.38" stroke="#eef3f8" stroke-width="20" stroke-linecap="round"/>
   <line x1="200" y1="200" x2="296.99" y2="144.00" stroke="#eef3f8" stroke-width="16" stroke-linecap="round"/>
-  <circle cx="200" cy="200" r="20" fill="#4fd1ff"/>
+  <circle cx="200" cy="200" r="20" fill="#cdb184"/>
 </svg>

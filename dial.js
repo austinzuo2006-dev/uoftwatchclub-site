@@ -4,7 +4,7 @@
  * seconds hand + seconds ring) and by the build script for static icons.
  */
 (function (root) {
-  const CYAN = '#4fd1ff';
+  const CYAN = '#cdb184'; // champagne gold (name kept from the original cyan logo)
   // site-wide accent; pages can override with <html data-accent="#hex">
   const ACCENT = (typeof document !== 'undefined' && document.documentElement.dataset.accent) || CYAN;
   const WHITE = '#eef3f8';

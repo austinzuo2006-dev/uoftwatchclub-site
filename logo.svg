@@ -9,20 +9,20 @@
     </filter>
   </defs>
   <circle cx="200" cy="200" r="189" fill="url(#l-face)" stroke="#1d2937" stroke-width="3.5"/>
-  <circle class="ring" cx="200" cy="200" r="189" fill="none" stroke="#4fd1ff" stroke-width="4.5" stroke-linecap="round"
-          pathLength="100" stroke-dasharray="70.00 100" transform="rotate(-90 200 200)" filter="url(#l-glow)"/>
-  <polygon points="200.00,67.00 210.50,44.00 189.50,44.00" fill="#4fd1ff" filter="url(#l-glow)"/>
-  <g stroke="#4fd1ff" stroke-width="9" stroke-linecap="round" filter="url(#l-glow)">
+  <circle class="ring" cx="200" cy="200" r="189" fill="none" stroke="#cdb184" stroke-width="4.5" stroke-linecap="round"
+          pathLength="100" stroke-dasharray="70.00 100" transform="rotate(-90 200 200)" />
+  <polygon points="200.00,67.00 210.50,44.00 189.50,44.00" fill="#cdb184" />
+  <g stroke="#cdb184" stroke-width="9" stroke-linecap="round" >
     <line x1="337.00" y1="200.00" x2="353.00" y2="200.00" /><line x1="200.00" y1="337.00" x2="200.00" y2="353.00" /><line x1="63.00" y1="200.00" x2="47.00" y2="200.00" />
   </g>
   <text x="203.5" y="130" text-anchor="middle" font-family="Michroma, Eurostile, 'Arial Black', sans-serif" font-size="28" letter-spacing="7" fill="#eef3f8">UOFT</text>
-  <text x="202.5" y="291" text-anchor="middle" font-family="'Space Mono', ui-monospace, monospace" font-weight="700" font-size="12.5" letter-spacing="5" fill="#4fd1ff" filter="url(#l-glow)">WATCH CLUB</text>
+  <text x="202.5" y="291" text-anchor="middle" font-family="'Space Mono', ui-monospace, monospace" font-weight="700" font-size="12.5" letter-spacing="5" fill="#cdb184" >WATCH CLUB</text>
   <polygon points="209.43,200.33 127.04,150.79 203.84,208.62" fill="#0e1622" stroke="#eef3f8" stroke-width="2.6" stroke-linejoin="round"/>
   <polygon points="194.34,210.20 216.36,196.33 313.45,134.50 211.36,187.67 188.34,199.80" fill="#eef3f8"/>
   <g class="sec" transform="rotate(200 200 200)">
-    <line x1="200" y1="236" x2="200" y2="52" stroke="#4fd1ff" stroke-width="6" opacity=".14" stroke-linecap="round"/>
-    <line x1="200" y1="236" x2="200" y2="52" stroke="#4fd1ff" stroke-width="1.9" stroke-linecap="round" filter="url(#l-glow)"/>
-    <circle cx="200" cy="70" r="3.8" fill="#4fd1ff" filter="url(#l-glow)"/>
+    <line x1="200" y1="236" x2="200" y2="52" stroke="#cdb184" stroke-width="6" opacity=".14" stroke-linecap="round"/>
+    <line x1="200" y1="236" x2="200" y2="52" stroke="#cdb184" stroke-width="1.9" stroke-linecap="round" />
+    <circle cx="200" cy="70" r="3.8" fill="#cdb184" />
   </g>
-  <circle cx="200" cy="200" r="10.5" fill="#0b121c" stroke="#4fd1ff" stroke-width="3" filter="url(#l-glow)"/>
+  <circle cx="200" cy="200" r="10.5" fill="#0b121c" stroke="#cdb184" stroke-width="3" />
 </svg>
