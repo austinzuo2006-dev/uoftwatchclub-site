@@ -5,6 +5,8 @@
  */
 (function (root) {
   const CYAN = '#4fd1ff';
+  // site-wide accent; pages can override with <html data-accent="#hex">
+  const ACCENT = (typeof document !== 'undefined' && document.documentElement.dataset.accent) || CYAN;
   const WHITE = '#eef3f8';
   const C = 200;
 
@@ -24,9 +26,9 @@
     return `<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" ${attrs}/>`;
   };
 
-  function buildDial({ id = 'dial', text = true, ticks = true, small = false, detailed = false, secAngle = 200, ring = 0.7 } = {}) {
-    if (small) return buildMark({ id, secAngle, ring });
-    if (!detailed) return buildMinimal({ id, text, secAngle, ring });
+  function buildDial({ id = 'dial', text = true, ticks = true, small = false, detailed = false, secAngle = 200, ring = 0.7, accent = ACCENT, withGlow = false } = {}) {
+    if (small) return buildMark({ id, secAngle, ring, accent });
+    if (!detailed) return buildMinimal({ id, text, secAngle, ring, accent, glow: withGlow });
     const glow = `filter="url(#${id}-glow)"`;
     let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="dial-svg">
   <defs>
@@ -84,8 +86,8 @@
   }
 
   // The club logo: minimal dial, cyan markers at 12/3/6/9, seconds ring.
-  function buildMinimal({ id, text, secAngle, ring }) {
-    const glow = `filter="url(#${id}-glow)"`;
+  function buildMinimal({ id, text, secAngle, ring, accent, glow: useGlow }) {
+    const glow = useGlow ? `filter="url(#${id}-glow)"` : '';
     const H = 304, M = 60;
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="dial-svg">
   <defs>
@@ -98,37 +100,37 @@
     </filter>
   </defs>
   <circle cx="200" cy="200" r="189" fill="url(#${id}-face)" stroke="#1d2937" stroke-width="3.5"/>
-  <circle class="ring" cx="200" cy="200" r="189" fill="none" stroke="${CYAN}" stroke-width="4.5" stroke-linecap="round"
+  <circle class="ring" cx="200" cy="200" r="189" fill="none" stroke="${accent}" stroke-width="4.5" stroke-linecap="round"
           pathLength="100" stroke-dasharray="${(ring * 100).toFixed(2)} 100" transform="rotate(-90 200 200)" ${glow}/>
-  <polygon points="${xy(pt(133, 0))} ${xy(side(156, 0, 10.5))} ${xy(side(156, 0, -10.5))}" fill="${CYAN}" ${glow}/>
-  <g stroke="${CYAN}" stroke-width="9" stroke-linecap="round" ${glow}>
+  <polygon points="${xy(pt(133, 0))} ${xy(side(156, 0, 10.5))} ${xy(side(156, 0, -10.5))}" fill="${accent}" ${glow}/>
+  <g stroke="${accent}" stroke-width="9" stroke-linecap="round" ${glow}>
     ${[3, 6, 9].map((h) => tick(137, 153, h * 30, '')).join('')}
   </g>
   ${text ? `<text x="203.5" y="130" text-anchor="middle" font-family="Michroma, Eurostile, 'Arial Black', sans-serif" font-size="28" letter-spacing="7" fill="${WHITE}">UOFT</text>
-  <text x="202.5" y="291" text-anchor="middle" font-family="'Space Mono', ui-monospace, monospace" font-weight="700" font-size="12.5" letter-spacing="5" fill="${CYAN}" ${glow}>WATCH CLUB</text>` : ''}
+  <text x="202.5" y="291" text-anchor="middle" font-family="'Space Mono', ui-monospace, monospace" font-weight="700" font-size="12.5" letter-spacing="5" fill="${accent}" ${glow}>WATCH CLUB</text>` : ''}
   <polygon points="${xy(side(-8, H, 5))} ${xy(pt(88, H))} ${xy(side(-8, H, -5))}" fill="#0e1622" stroke="${WHITE}" stroke-width="2.6" stroke-linejoin="round"/>
   <polygon points="${xy(side(-10, M, 6))} ${xy(side(16, M, 5))} ${xy(pt(131, M))} ${xy(side(16, M, -5))} ${xy(side(-10, M, -6))}" fill="${WHITE}"/>
   <g class="sec" transform="rotate(${secAngle} 200 200)">
-    <line x1="200" y1="236" x2="200" y2="52" stroke="${CYAN}" stroke-width="6" opacity=".14" stroke-linecap="round"/>
-    <line x1="200" y1="236" x2="200" y2="52" stroke="${CYAN}" stroke-width="1.9" stroke-linecap="round" ${glow}/>
-    <circle cx="200" cy="70" r="3.8" fill="${CYAN}" ${glow}/>
+    <line x1="200" y1="236" x2="200" y2="52" stroke="${accent}" stroke-width="6" opacity=".14" stroke-linecap="round"/>
+    <line x1="200" y1="236" x2="200" y2="52" stroke="${accent}" stroke-width="1.9" stroke-linecap="round" ${glow}/>
+    <circle cx="200" cy="70" r="3.8" fill="${accent}" ${glow}/>
   </g>
-  <circle cx="200" cy="200" r="10.5" fill="#0b121c" stroke="${CYAN}" stroke-width="3" ${glow}/>
+  <circle cx="200" cy="200" r="10.5" fill="#0b121c" stroke="${accent}" stroke-width="3" ${glow}/>
 </svg>`;
   }
 
   // Simplified, heavier version for favicons and the nav (readable at 16–40px).
-  function buildMark({ id, secAngle, ring }) {
+  function buildMark({ id, secAngle, ring, accent }) {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="dial-svg">
   <circle cx="200" cy="200" r="178" fill="none" stroke="#1b2735" stroke-width="22"/>
-  <circle class="ring" cx="200" cy="200" r="178" fill="none" stroke="${CYAN}" stroke-width="22" stroke-linecap="round"
+  <circle class="ring" cx="200" cy="200" r="178" fill="none" stroke="${accent}" stroke-width="22" stroke-linecap="round"
           pathLength="100" stroke-dasharray="${(ring * 100).toFixed(2)} 100" transform="rotate(-90 200 200)"/>
   <circle cx="200" cy="200" r="150" fill="#0c141f"/>
-  <g stroke="${CYAN}" stroke-width="22">${[3, 6, 9].map((h) => tick(92, 132, h * 30, '')).join('')}</g>
-  <polygon points="${xy(pt(88, 0))} ${xy(side(136, 0, 26))} ${xy(side(136, 0, -26))}" fill="${CYAN}"/>
+  <g stroke="${accent}" stroke-width="22">${[3, 6, 9].map((h) => tick(92, 132, h * 30, '')).join('')}</g>
+  <polygon points="${xy(pt(88, 0))} ${xy(side(136, 0, 26))} ${xy(side(136, 0, -26))}" fill="${accent}"/>
   <line x1="200" y1="200" x2="${pt(78, 304)[0].toFixed(2)}" y2="${pt(78, 304)[1].toFixed(2)}" stroke="${WHITE}" stroke-width="20" stroke-linecap="round"/>
   <line x1="200" y1="200" x2="${pt(112, 60)[0].toFixed(2)}" y2="${pt(112, 60)[1].toFixed(2)}" stroke="${WHITE}" stroke-width="16" stroke-linecap="round"/>
-  <circle cx="200" cy="200" r="20" fill="${CYAN}"/>
+  <circle cx="200" cy="200" r="20" fill="${accent}"/>
 </svg>`;
   }
 

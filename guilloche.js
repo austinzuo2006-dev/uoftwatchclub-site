@@ -1,35 +1,62 @@
 /*
- * Guilloché (rose-engine) pattern, drawn as fine lines.
- * Each band is n copies of r(t) = R + a·sin(k·t + phase), phase-shifted
- * so the curves weave into the moiré you see on engraved watch dials.
+ * Ripple guilloché, drawn on canvas.
+ * Concentric engraved rings, each carrying a fine wave (r += A·sin(Kθ + i·D))
+ * so neighbouring rings weave like an engine-turned dial. A slow radial
+ * ripple (r += B·sin(2πR/L − ωt)) travels outward through the rings.
+ * Animates only while on screen; static if the user prefers reduced motion.
  */
 (function () {
-  const BANDS = [
-    { R: 352, a: 20, k: 18, n: 9 },
-    { R: 432, a: 26, k: 12, n: 12 },
-  ];
+  const P = { R0: 296, R1: 494, gap: 6, A: 4.5, K: 28, D: Math.PI / 7, B: 5, L: 64, W: 1.1 };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function band({ R, a, k, n }) {
-    const steps = k * 8;
-    let d = '';
-    for (let i = 0; i < n; i++) {
-      const phase = (i * 2 * Math.PI) / n;
-      for (let j = 0; j <= steps; j++) {
-        const t = (j / steps) * 2 * Math.PI;
-        const r = R + a * Math.sin(k * t + phase);
-        d += (j ? 'L' : 'M') + (500 + r * Math.cos(t)).toFixed(1) + ' ' + (500 + r * Math.sin(t)).toFixed(1);
+  function setup(el) {
+    const canvas = document.createElement('canvas');
+    el.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    const color = getComputedStyle(el).color;
+    let size = 0, visible = false, last = 0;
+
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      size = el.clientWidth;
+      canvas.width = canvas.height = Math.round(size * dpr);
+      ctx.setTransform((dpr * size) / 1000, 0, 0, (dpr * size) / 1000, 0, 0);
+    };
+
+    const draw = (t) => {
+      ctx.clearRect(0, 0, 1000, 1000);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 0.9;
+      const steps = P.K * 7;
+      for (let i = 0, R = P.R0; R <= P.R1; i++, R += P.gap) {
+        const ripple = P.B * Math.sin((2 * Math.PI * R) / P.L - t * P.W);
+        ctx.beginPath();
+        for (let j = 0; j <= steps; j++) {
+          const th = (j / steps) * 2 * Math.PI;
+          const r = R + ripple + P.A * Math.sin(P.K * th + i * P.D);
+          const x = 500 + r * Math.cos(th), y = 500 + r * Math.sin(th);
+          j ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+        }
+        ctx.stroke();
       }
-      d += 'Z';
-    }
-    return d;
+    };
+
+    const loop = (now) => {
+      if (!visible) return;
+      if (now - last > 40) { draw(now / 1000); last = now; } // ~24 fps is plenty for a slow ripple
+      requestAnimationFrame(loop);
+    };
+
+    resize();
+    draw(0);
+    window.addEventListener('resize', () => { resize(); draw(performance.now() / 1000); });
+    if (reduce || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(([e]) => {
+      const was = visible;
+      visible = e.isIntersecting;
+      if (visible && !was) requestAnimationFrame(loop);
+    }).observe(el);
   }
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="none" stroke="currentColor" stroke-width=".9">
-    ${BANDS.map((b) => `<path d="${band(b)}"/>`).join('')}
-    <circle cx="500" cy="500" r="318" stroke-width=".9"/>
-    <circle cx="500" cy="500" r="388" stroke-width=".5"/>
-    <circle cx="500" cy="500" r="478" stroke-width=".9"/>
-  </svg>`;
-
-  document.querySelectorAll('[data-guilloche]').forEach((el) => { el.innerHTML = svg; });
+  document.querySelectorAll('[data-guilloche]').forEach(setup);
 })();
