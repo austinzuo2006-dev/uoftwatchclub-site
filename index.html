@@ -6,7 +6,7 @@
   <title>UofT Watch Club</title>
   <meta name="description" content="A student community at the University of Toronto for anyone curious about watches — mechanical, luxury or smart. Membership is free for UofT students.">
   <link rel="canonical" href="https://uoftwatchclub.com/">
-  <meta name="theme-color" content="#f6f2ea">
+  <meta name="theme-color" content="#070b11">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="UofT Watch Club">
   <meta property="og:title" content="UofT Watch Club">
@@ -18,15 +18,15 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Michroma&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="nav">
+  <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a href="#top" class="brand"><img src="icon.svg" alt="" width="34" height="34">UofT Watch Club</a>
+      <a href="#top" class="brand"><img src="icon.svg" alt="" width="30" height="30"><span>UofT Watch Club</span></a>
       <nav>
         <a href="#about">About</a>
         <a href="#events">Events</a>
@@ -38,139 +38,126 @@
 
   <main id="top">
     <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow">University of Toronto · St. George · Est. 2026</p>
-        <h1>Time,<br> well kept.</h1>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-dial" data-dial data-live aria-hidden="true"></div>
+      <div class="wrap hero-copy">
+        <p class="label">University of Toronto · St. George · Est. 2026</p>
+        <h1>Time,<br>well kept.</h1>
         <p class="lede">A student community for anyone curious about watches — mechanical, luxury or smart, from your first quartz to the mechanics of a tourbillon.</p>
-        <div class="hero-cta">
-          <a href="register.html" class="btn">Become a member</a>
-          <a href="#events" class="btn btn-ghost">Upcoming events</a>
+        <div class="cta">
+          <a href="register.html" class="btn btn-solid">Become a member</a>
+          <a href="#events" class="link">Upcoming events</a>
         </div>
       </div>
-      <svg class="dial" viewBox="0 0 200 200" aria-hidden="true">
-        <g class="dial-face">
-          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="100" cy="100" r="84" fill="none" stroke="currentColor" stroke-width=".5"/>
-          <g stroke="currentColor" stroke-width="2">
-            <line x1="100" y1="10" x2="100" y2="24"/><line x1="190" y1="100" x2="176" y2="100"/>
-            <line x1="100" y1="190" x2="100" y2="176"/><line x1="10" y1="100" x2="24" y2="100"/>
-          </g>
-          <line x1="100" y1="100" x2="67.2" y2="77" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          <line x1="100" y1="100" x2="148.5" y2="72" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </g>
-        <g class="sec">
-          <line x1="100" y1="116" x2="100" y2="20" stroke="currentColor" stroke-width=".8" stroke-linecap="round"/>
-          <circle cx="100" cy="100" r="2.5" fill="currentColor"/>
-        </g>
-      </svg>
+      <a href="#about" class="scroll-hint" aria-label="Scroll to About">Scroll</a>
     </section>
 
     <section id="about" class="section">
-      <div class="wrap two-col">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>Who we are</h2>
-          <ul class="facts">
-            <li><strong>Free</strong> membership</li>
-            <li><strong>All</strong> UofT students welcome</li>
-            <li><strong>St. George</strong> campus</li>
-          </ul>
-        </div>
-        <div class="prose">
+      <div class="wrap">
+        <p class="label reveal">01 — About</p>
+        <p class="statement reveal">We explore how watches are made, how they are designed, and how the market prices them. No collection or experience required.</p>
+        <dl class="facts reveal">
+          <div><dt>Membership</dt><dd>Free</dd></div>
+          <div><dt>Open to</dt><dd>All UofT students</dd></div>
+          <div><dt>Campus</dt><dd>St. George</dd></div>
+          <div><dt>Founded</dt><dd>2026</dd></div>
+        </dl>
+        <div class="prose two-col reveal">
           <p>The University of Toronto Watch Club (UTWC) brings together students who are interested in watches of every kind — mechanical, luxury and smart. Whether you own a collection or have never worn a watch, you are welcome here.</p>
-          <p>We explore watchmaking, watch history, design and wearable technology, and we take a close look at the watch market itself: pricing, the secondary market, and what data can tell us about both. Along the way, we connect students with each other and with people working in the watch and wearable technology industries.</p>
-          <p>Membership is free and open to all registered UofT students.</p>
+          <p>We study watchmaking, watch history, design and wearable technology, and we take a close look at the watch market itself: pricing, the secondary market, and what data can tell us about both. Along the way, we connect students with each other and with people working in the watch and wearable technology industries.</p>
         </div>
-      </div>
-      <div class="wrap cards">
-        <article class="card">
-          <h3>Meetups &amp; visits</h3>
-          <p>Casual get-togethers to share watches and talk shop, plus visits to watch shops and brand boutiques.</p>
-        </article>
-        <article class="card">
-          <h3>Speaker events</h3>
-          <p>Talks with collectors, retailers, watchmakers and people in the watch and wearables industries.</p>
-        </article>
-        <article class="card">
-          <h3>Workshops</h3>
-          <p>Hands-on sessions on movements, design, care and the basics of watchmaking.</p>
-        </article>
-        <article class="card">
-          <h3>Market &amp; data</h3>
-          <p>Digging into watch prices, the secondary market and the data behind them.</p>
-        </article>
       </div>
     </section>
 
-    <section id="events" class="section alt">
+    <section class="section section-tight">
       <div class="wrap">
-        <p class="eyebrow">Events</p>
-        <h2>Upcoming</h2>
-        <ul class="events">
-          <li>
-            <time><span>Date</span><strong>TBA</strong></time>
-            <div>
-              <h3>Speaker Event: Inside Apple's Supply Chain</h3>
-              <p>A conversation with a former supply chain leader from Apple's Silicon Valley headquarters, on how hardware gets built at scale and what it means for the watch and wearables industry.</p>
-              <p>Location &amp; time TBA</p>
-            </div>
-          </li>
-        </ul>
-        <p class="events-note">More events coming soon. <a href="register.html">Register</a> to hear about them first.</p>
+        <p class="label reveal">02 — What we do</p>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card-no">01</span>
+            <h3>Meetups &amp; visits</h3>
+            <p>Casual get-togethers to share watches and talk shop, plus visits to watch shops and brand boutiques.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-no">02</span>
+            <h3>Speaker events</h3>
+            <p>Talks with collectors, retailers, watchmakers and people in the watch and wearables industries.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-no">03</span>
+            <h3>Workshops</h3>
+            <p>Hands-on sessions on movements, design, care and the basics of watchmaking.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-no">04</span>
+            <h3>Market &amp; data</h3>
+            <p>Digging into watch prices, the secondary market and the data behind them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section event">
+      <div class="event-glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="label reveal">03 — Upcoming</p>
+        <article class="event-card reveal">
+          <ul class="event-meta">
+            <li>Speaker event</li>
+            <li>Date TBA</li>
+            <li>Location TBA</li>
+          </ul>
+          <h2>Inside Apple's Supply Chain</h2>
+          <p>A conversation with a former supply chain leader from Apple's Silicon Valley headquarters, on how hardware gets built at scale and what it means for the watch and wearables industry.</p>
+          <a href="register.html" class="link">Register interest</a>
+        </article>
+        <p class="note reveal">More events coming soon.</p>
       </div>
     </section>
 
     <section id="team" class="section">
       <div class="wrap">
-        <p class="eyebrow">Executive team</p>
-        <h2>The people behind the club</h2>
-        <div class="team">
-          <div class="member"><div class="avatar">AZ</div><h3>Austin Zuo</h3><p>Head of Operations</p></div>
-          <div class="member"><div class="avatar">MH</div><h3>Michael Huang</h3><p>Head of Finance</p></div>
-          <div class="member"><div class="avatar">JL</div><h3>James Lochbichler</h3><p>Head of Liaison</p></div>
-          <div class="member"><div class="avatar">LL</div><h3>Levi Lin</h3><p>Secretary</p></div>
-        </div>
+        <p class="label reveal">04 — Executive team</p>
+        <h2 class="reveal">The people behind the club</h2>
+        <ul class="team">
+          <li class="reveal"><span class="idx">01</span><span class="name">Austin Zuo</span><span class="role">Head of Operations</span></li>
+          <li class="reveal"><span class="idx">02</span><span class="name">Michael Huang</span><span class="role">Head of Finance</span></li>
+          <li class="reveal"><span class="idx">03</span><span class="name">James Lochbichler</span><span class="role">Head of Liaison</span></li>
+          <li class="reveal"><span class="idx">04</span><span class="name">Levi Lin</span><span class="role">Secretary</span></li>
+        </ul>
       </div>
     </section>
 
     <section id="join" class="section join">
+      <div class="join-ring" aria-hidden="true"></div>
       <div class="wrap">
-        <h2>Join the club</h2>
-        <p class="lede">Membership is free for all registered UofT students. Register online in two minutes, or sign up at any club event. Alumni, staff and friends of the club are welcome as associate members.</p>
-        <div class="hero-cta">
-          <a href="register.html" class="btn">Register</a>
+        <p class="label reveal">05 — Membership</p>
+        <h2 class="reveal">Join the club</h2>
+        <p class="lede reveal">Membership is free for all registered UofT students. Register online in two minutes, or sign up at any club event. Alumni, staff and friends of the club are welcome as associate members.</p>
+        <div class="cta reveal">
+          <a href="register.html" class="btn btn-solid">Register</a>
           <!-- TODO: add back once the handle is ready
-          <a href="https://instagram.com/[HANDLE]" class="btn btn-ghost">Instagram</a>
+          <a href="https://instagram.com/[HANDLE]" class="link">Instagram</a>
           -->
-          <a href="mailto:info@uoftwatchclub.com" class="btn btn-ghost">Email us</a>
+          <a href="mailto:info@uoftwatchclub.com" class="link">Email us</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="wrap">
+    <div class="wrap footer-inner">
+      <div class="footer-brand"><img src="icon.svg" alt="" width="26" height="26"><span>UofT Watch Club</span></div>
       <nav class="footer-links">
         <a href="register.html">Register</a>
         <a href="mailto:info@uoftwatchclub.com">info@uoftwatchclub.com</a>
         <a href="#top">Back to top</a>
       </nav>
-      <p>© <span id="year"></span> University of Toronto Watch Club. A non-profit student group at the University of Toronto, St. George campus. Not a department, program or service of the University.</p>
+      <p class="footer-legal">© <span id="year"></span> University of Toronto Watch Club. A non-profit student group at the University of Toronto, St. George campus. Not a department, program or service of the University.</p>
     </div>
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Tick the hero dial's second hand in time with the real clock.
-    const sec = document.querySelector('.dial .sec');
-    const startSec = new Date().getSeconds();
-    const startMs = Date.now();
-    const setHand = () => {
-      const elapsed = Math.round((Date.now() - startMs) / 1000);
-      sec.style.transform = `rotate(${(startSec + elapsed) * 6}deg)`;
-    };
-    setHand();
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(setHand, 1000);
-  </script>
+  <script src="dial.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>

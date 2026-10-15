@@ -6,7 +6,7 @@
   <title>Join · UofT Watch Club</title>
   <meta name="description" content="Register for the University of Toronto Watch Club. Membership is free for all UofT students.">
   <link rel="canonical" href="https://uoftwatchclub.com/register.html">
-  <meta name="theme-color" content="#f6f2ea">
+  <meta name="theme-color" content="#070b11">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="UofT Watch Club">
   <meta property="og:title" content="Join the UofT Watch Club">
@@ -19,14 +19,14 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Michroma&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="nav">
+  <header class="nav scrolled" id="nav">
     <div class="wrap nav-inner">
-      <a href="./" class="brand"><img src="icon.svg" alt="" width="34" height="34">UofT Watch Club</a>
+      <a href="./" class="brand"><img src="icon.svg" alt="" width="30" height="30"><span>UofT Watch Club</span></a>
       <nav>
         <a href="./#about">About</a>
         <a href="./#events">Events</a>
@@ -35,9 +35,9 @@
     </div>
   </header>
 
-  <main class="section register">
+  <main class="register">
     <div class="wrap narrow">
-      <p class="eyebrow">Membership</p>
+      <p class="label">Membership</p>
       <h1 class="page-title">Join the club</h1>
       <p class="lede">Membership is free for all registered UofT students. Alumni, staff and friends are welcome as associate members. It takes about two minutes.</p>
 
@@ -49,7 +49,7 @@
             <input id="name" name="name" autocomplete="name" required maxlength="100">
           </div>
           <div class="field">
-            <span class="label">I am a <span class="req">*</span></span>
+            <span class="label-q">I am a <span class="req">*</span></span>
             <div class="options">
               <label><input type="radio" name="memberType" value="UofT student" required> UofT student</label>
               <label><input type="radio" name="memberType" value="Alumni"> Alumni</label>
@@ -82,7 +82,7 @@
         <fieldset>
           <legend>Your interest in watches</legend>
           <div class="field">
-            <span class="label">How would you describe yourself? <span class="req">*</span></span>
+            <span class="label-q">How would you describe yourself? <span class="req">*</span></span>
             <div class="options">
               <label><input type="radio" name="experience" value="New to watches" required> New to watches</label>
               <label><input type="radio" name="experience" value="Casual enthusiast"> Casual enthusiast</label>
@@ -91,7 +91,7 @@
             </div>
           </div>
           <div class="field">
-            <span class="label">What are you interested in?</span>
+            <span class="label-q">What are you interested in?</span>
             <div class="options grid2">
               <label><input type="checkbox" name="interests" value="Mechanical watches"> Mechanical watches</label>
               <label><input type="checkbox" name="interests" value="Luxury watches"> Luxury watches</label>
@@ -102,7 +102,7 @@
             </div>
           </div>
           <div class="field">
-            <span class="label">Which events would you come to?</span>
+            <span class="label-q">Which events would you come to?</span>
             <div class="options grid2">
               <label><input type="checkbox" name="events" value="Meetups"> Meetups</label>
               <label><input type="checkbox" name="events" value="Shop & brand visits"> Shop &amp; brand visits</label>
@@ -111,7 +111,7 @@
             </div>
           </div>
           <div class="field">
-            <span class="label">Are you interested in our upcoming speaker event, <em>Inside Apple's Supply Chain</em>?</span>
+            <span class="label-q">Are you interested in our upcoming speaker event, <em>Inside Apple's Supply Chain</em>?</span>
             <div class="options">
               <label><input type="radio" name="appleEvent" value="Yes"> Yes</label>
               <label><input type="radio" name="appleEvent" value="Maybe"> Maybe</label>
@@ -150,24 +150,25 @@
         <p class="privacy">We only use your information to run the club. It is stored in a private spreadsheet that only the executive team can access, and we never share or sell it. To have your information removed, email <a href="mailto:info@uoftwatchclub.com">info@uoftwatchclub.com</a>.</p>
 
         <p class="form-error" id="form-error" role="alert" hidden></p>
-        <button type="submit" class="btn" id="submit">Submit registration</button>
+        <button type="submit" class="btn btn-solid" id="submit">Submit registration</button>
       </form>
 
       <div class="success" id="success" hidden>
         <h2>You're in. Welcome to the club!</h2>
         <p>Thanks for registering. We'll be in touch about upcoming events.</p>
-        <a href="./" class="btn btn-ghost">Back to home</a>
+        <a href="./" class="btn">Back to home</a>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="wrap">
+    <div class="wrap footer-inner">
+      <div class="footer-brand"><img src="icon.svg" alt="" width="26" height="26"><span>UofT Watch Club</span></div>
       <nav class="footer-links">
         <a href="./">Home</a>
         <a href="mailto:info@uoftwatchclub.com">info@uoftwatchclub.com</a>
       </nav>
-      <p>© <span id="year-now"></span> University of Toronto Watch Club. A non-profit student group at the University of Toronto, St. George campus. Not a department, program or service of the University.</p>
+      <p class="footer-legal">© <span id="year-now"></span> University of Toronto Watch Club. A non-profit student group at the University of Toronto, St. George campus. Not a department, program or service of the University.</p>
     </div>
   </footer>
 
